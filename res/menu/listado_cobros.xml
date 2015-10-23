@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.tech4mobile.cobanmovil.ListadoCobrosActivity" >
+
+    <item
+        android:id="@+id/mnPrincipal"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/mnPrincipal"/>
+    <item 
+        android:id="@+id/action_search" 
+        android:showAsAction="always"
+		android:title="@string/mnSearch"
+		android:icon="@android:drawable/ic_menu_search"
+		android:actionViewClass="android.widget.SearchView" />
+    
+   <!--  <item 
+        android:id="@+id/mnBluetooth"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/mnBluetooth"/>  -->
+
+</menu>

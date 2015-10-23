@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">COMO V2.0</string>
+    <string name="title_connected_to">Conectado</string>
+    <string name="title_connecting">Conectando con impresora&#8230;</string>
+    <string name="title_not_connected">Impresora no conectada</string>
+    <string name="mnLista">Regresar al listado</string>
+    <string name="mnSalir">Salir</string>
+    <string name="mnPrincipal">Menú Principal</string>
+    <string name="mnDisplayfoto">Regresar al detalle</string>
+    <string name="mnBluetooth">Conectar Impresora</string>
+    <string name="mnDetalle_cobro">Detalle Cobro</string>
+    <string name="strlblRuta">VER RUTA DE COBRO</string>
+    <string name="strbtnPend">PENDIENTES</string>
+    <string name="strbtnReali">REALIZADOS</string>
+    <string name="strbtnRecordar">C/RECORDATORIO</string>
+    <string name="strbtnSalir">Salir</string>
+    <string name="title_activity_listado_cobros">Ruta del día</string>
+    <string name="strTemporal">xxx</string>
+    <string name="strLinea1"></string>
+    <string name="strLinea2"></string>
+    <string name="strLinea3"></string>
+
+    <!-- Etiquetas título -->
+    <string name="strTxtCobrosDia">COBROS PENDIENTES DEL DÍA</string>
+    <string name="lblCobrosPend"></string>
+
+    <!-- Dialogo salir -->
+    <string name="lblAccion">Cobros Cobán</string>
+    <string name="lblSeguroExit">Recuerde esta aplicación trabaja con acceso a internet, en estos momentos no cuenta con ninguna conexión, la aplicación se cerrará</string>
+    <string name="lblSi">Entiendo</string>
+    <string name="lblNo">No</string>
+
+    <!-- Diálogo Pantalla salir Listado Cobros -->
+    <string name="lblTit">Listado de pendientes</string>
+    <string name="lblConfExit">¿Desea regresesar al menú principal?</string>
+    <string name="title_activity_detalle_cobro">Detalle del cobro</string>
+    <string name="strlblCobro">COBRO</string>
+    <string name="strbtnFoto">Foto</string>
+    <string name="strbtnCobro">Imprimir</string>
+    <string name="strbtnAviso">Aviso</string>
+    <string name="strbtnNota">Nota</string>
+    <string name="strbtnPrint">Recibo</string>
+    <string name="title_activity_display_photo">FOTO DISPLAY</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strPhotoTemp">zzzz</string>
+    <string name="strbtnBackDet">Regresar al detalle</string>
+    <string name="title_activity_listado_cobros_reali">Ruta Cobros Realizados</string>
+    <string name="strlblCobrosRealizados">COBROS REALIZADOS</string>
+    <string name="title_activity_aviso_pago">Aviso de cobro</string>
+    <string name="strbtnGrabAviso">GRABAR AVISO</string>
+    <string name="strlblAviso">Aviso de cobro</string>
+    <string name="strlblRecordatorios">RECORDATORIOS</string>
+    <string name="title_activity_listado_recordatorios">Con Recordatorio</string>
+    <string name="mnPrincipalRecoda">Menú Principal</string>
+
+    <!-- Barra de búsqueda -->
+    <string name="mnSearch">Buscar</string>
+    <string name="title_activity_detalle_cobro_recordatorio">Detalle Cobro Recordatorio</string>
+    <string name="mnPrincipalRecord">Settings</string>
+    <string name="strlblCobroRecor">RECUPERACION</string>
+    <string name="strMap">mapa</string>
+    <string name="mnDetalle">Detalle</string>
+    <string name="title_mapa_disp"> MAPA</string>
+    <string name="title_activity_mapa_activity_solo">MapaActivitySolo</string>
+    <string name="mnMapa">Regresar Detalle</string>
+    <string name="title_activity_mapa_solo">MapaSoloActivity</string>
+    <string name="title_fragment_place">MAPA FRAGMENTO</string>
+    <string name="title_activity_mapa_mostrar">Ultima ubicación cliente</string>
+    <string name="strTakePhoto">Tomar Foto</string>
+    <string name="strbtnSendPhoto">Enviar Foto</string>
+    <string name="title_activity_note">Anotación Cliente</string>
+    <string name="action_settings">Settings</string>
+    <string name="strlblNote">REALIZAR NOTA</string>
+    <string name="strbtnGrabarNota">Grabar</string>
+    <string name="strbtnCancelarNota">Cancelar</string>
+    <string name="strLblNoteString">Escriba su nota aquí</string>
+
+</resources>

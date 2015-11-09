@@ -61,15 +61,15 @@ import android.widget.Toast;
 	
 	
 		
-	// Asigno variables a los textview para setarlos con los datos de la respuestas del JSON
-	TextView sTContrato ;
-	TextView sTNombre ;
+	// Asigno variables a los textview para setearlos con los datos de la respuestas del JSON
+	TextView sTContrato;
+	TextView sTNombre;
 	TextView sTNegocio;
-	TextView sTDideccion ;
-	TextView sTMontoBack ;
-	TextView sTCuotaDia ;
-	TextView sTSaldoDia ;
-	TextView sTSaldoTot ;
+	TextView sTDideccion;
+	TextView sTMontoBack;
+	TextView sTSaldoDia;
+	TextView sTCuotaDia;
+	TextView sTSaldoTot;
 	String sINombreC;
 	String sIquoteId;
 	String sICuotaDia;

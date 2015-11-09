@@ -76,5 +76,22 @@
     <string name="strbtnGrabarNota">Grabar</string>
     <string name="strbtnCancelarNota">Cancelar</string>
     <string name="strLblNoteString">Escriba su nota aquí</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splas_screen"> </string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="logo">imgVLogo</string>
+    
+    <string name="prompt_user">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="strIngresar">Ingresar</string>
+    
+    
+    
+    <string name="invalid_user">Éste usuario es inválido</string>
+    <string name="invalid_password">La contraseña es demasiado corta</string>
+    <string name="incorrect_password">La contraseña es incorrecta</string>
+    <string name="field_required">Éste campo es requerido</string>
+    <string name="title_activity_auth"></string>
 
 </resources>

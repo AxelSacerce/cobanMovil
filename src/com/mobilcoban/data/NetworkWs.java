@@ -114,20 +114,20 @@ public class NetworkWs
 	
 	
 	// Cobro Confirmacion  Realizado
-		public static String CobroPrint(String quote ,String Id, String Action, String Monto,  String Latitud, String Longitud)
+		public static String CobroPrint(String contratoId ,String userId, String datePay, String quotePay,  String numVoucher)
 		{
 			
 			String result="";
 			ArrayList<NameValuePair> params;
 			params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("quoteID", quote));
-			params.add(new BasicNameValuePair("appID", Id));
-			params.add(new BasicNameValuePair("action", Action));
-			params.add(new BasicNameValuePair("AMOUNT", Monto));
-			params.add(new BasicNameValuePair("LATITUDE", Latitud));
-			params.add(new BasicNameValuePair("LONGITUDE", Longitud));
+			params.add(new BasicNameValuePair("id_contrato", contratoId));
+			params.add(new BasicNameValuePair("id_usuario", userId));
+			params.add(new BasicNameValuePair("fecha_pago", datePay));
+			params.add(new BasicNameValuePair("cuotas_pagadas", quotePay));
+			params.add(new BasicNameValuePair("no_recibo", numVoucher));
 			
-			result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
+			
+			result = POSTData("http://dev-wagadelta.c9.io/api/cobros",params);
 			return result;
 		}
 	

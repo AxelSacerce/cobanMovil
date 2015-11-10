@@ -50,7 +50,7 @@ import com.zebra.printer.MobilePrinter;
 	String TitleTxt2;
 	String TitleTxt3;
 	ArrayList<itemCobrosDetalle> lCobros = new ArrayList<itemCobrosDetalle>();
-	ImageView btnSalir;
+	
 	ListView lvlistCobros;
 	TextView Title;
 	private ProgressDialog DialogoCargar;
@@ -254,12 +254,10 @@ import com.zebra.printer.MobilePrinter;
 				Limite = iLista.getStringExtra("Limit");
 				*/
 				
-				// Creo mis objetos
-				btnSalir = (ImageView)findViewById(R.id.imgInnerExit);
+							
 						
 				// Escuchadores
-				botonListener listener = new botonListener();
-				btnSalir.setOnClickListener(listener);
+							
 				
 				
 				// Listener del clic en el item de la lista
@@ -371,10 +369,7 @@ class botonListener implements OnClickListener
 		try
 		{
 			
-			int id = v.getId();
-			if(id == R.id.imgInnerExit){
-				System.exit(0);
-			}
+			
 			
 			
 		}catch (Exception e)

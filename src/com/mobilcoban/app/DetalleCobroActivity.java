@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 
 //import javax.security.auth.DestroyFailedException;
 
@@ -69,10 +70,6 @@ import android.widget.Toast;
 	String sMontoPrest;
 	
 	
-	
-	
-	
-	
 	private ProgressDialog DialogoCargar;
 	
 	
@@ -122,16 +119,23 @@ import android.widget.Toast;
    	String ruta_fotografia = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/contratos/";
    	String str_imagen_fotografia;
     static	String DateTimePhoto;
+    static  String DateTimeSystem;
     boolean borrado = false;     
     static File mediaFile;   		
 	static MobilePrinter mMobilePrinter;
+	String sValCuotaFormat;
+	String sValPrestamo;
 	
 	DecimalFormat formato = new DecimalFormat("##,###,###.##");
 	
 	// Take Photo
 	
 	public String fechaHoraActual(){
-		   return new SimpleDateFormat( "yyyy-MM-dd_HH-mm-ss", java.util.Locale.getDefault()).format(Calendar.getInstance() .getTime());
+		   return new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()).format(Calendar.getInstance() .getTime());
+		}
+	
+	public String fechaHoraActualEs(){
+		   return new SimpleDateFormat( "dd-MM-yyyy HH:mm:ss", java.util.Locale.getDefault()).format(Calendar.getInstance() .getTime());
 		}
 	
 	
@@ -196,19 +200,25 @@ import android.widget.Toast;
 			{
 				DialogoCargar.dismiss();
 				
+
+				JSONArray ArrayPrint  = null;
+				JSONObject jsPago;
 				
 				try
 				{
-					// Creo variable para contener el array de respuesta
-					JSONArray ArrayPrint = new JSONArray(sResultPrint);
+					// Creo variable para contener el array de respuesta Respuesta array cobro
+					jsPago = new JSONObject(sResultPrint);
+					ArrayPrint = jsPago.getJSONArray("flag");
+					
+					
 					
 					if(ArrayPrint.length() == 0)
 					{
 						Toast.makeText(DetalleCobroActivity.this, "No se ha generado cobro para este cliente", Toast.LENGTH_SHORT).show();
                         finish();
-					}else
+					}else if(ArrayPrint.equals("true"))
 					{
-						//CobroDetalleItems itemsObten;
+						/*CobroDetalleItems itemsObten;
 						
 						for(int i =0; i<ArrayPrint.length(); i++)
 						{
@@ -217,7 +227,9 @@ import android.widget.Toast;
 							sPrintRetorno = Jo.getString("RESULT").toString();
 							sPrintMessage = Jo.getString("MESSAGE").toString();
 														
-						}				
+						}			*/	
+						
+						Toast.makeText(DetalleCobroActivity.this, "Cobro guardado con éxito...", Toast.LENGTH_SHORT).show();
 						
 						Log.i("PRINT", sPrintMessage);
 						//Toast.makeText(DetalleCobroActivity.this, "¡cobro procesado!", Toast.LENGTH_SHORT).show();
@@ -366,8 +378,8 @@ import android.widget.Toast;
 			Double dMontoCuota = Double.parseDouble(sValCuota);
 			Double dMontoPresta = Double.parseDouble(sMontoPrest);
 			
-			String sValCuotaFormat = formato.format(dMontoCuota); 
-			String sValPrestamo = formato.format(dMontoPresta);
+			sValCuotaFormat = formato.format(dMontoCuota); 
+			sValPrestamo = formato.format(dMontoPresta);
 			   
 			
 			sTContrato.setText("Contrato No.: " +  sContratoId);
@@ -452,15 +464,11 @@ import android.widget.Toast;
 					iFoto.putExtra("NombreC", sINombreC);
 					startActivity(iFoto);
 				} else if (id == R.id.btnPrint) {
-					if(gps.canGetLocation())
-					{
-			            latitud = gps.getLatitude();
-			            longitud = gps.getLongitude();
-					}
-					AccionP = "4";
-					AppIdP = "30";
-					//DialogoCargar = new ProgressDialog(DetalleCobroActivity.this);
-					DialogoCargar.setMessage("Realizando cobro...");
+					
+					/*AccionP = "4";
+					AppIdP = "30";*/
+					DialogoCargar = new ProgressDialog(DetalleCobroActivity.this);
+					DialogoCargar.setMessage("Espere un momento mientras se imprime el recibo...");
 					DialogoCargar.setCancelable(false);
 					DialogoCargar.show();
 					new Thread()
@@ -469,21 +477,35 @@ import android.widget.Toast;
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
-							super.run();
 							
-							sResultPrint = NetworkWs.CobroPrint(sCuotaId, AppIdP, AccionP, sICuotaDia, String.valueOf(latitud), String.valueOf(longitud));
 							
-							ListadoCobrosActivity.mMobilePrinter.printText("RECIBO COBRO\nContrato:  " + sIquoteId  + "\nNombre: " + sINombreC + 
-									"\nMonto pagado:  " + sICuotaDia + "\n\n\n\n\n\n\n", MobilePrinter.ALIGNMENT_LEFT,
+							
+							DateTimeSystem = fechaHoraActual();
+							String DatePrint = fechaHoraActualEs();
+							String userID = "2";
+							String cuotasPaga = "2";
+							
+							
+							
+							int numero = (int) (Math.random() * 65) + 1;
+							
+							
+							sResultPrint = NetworkWs.CobroPrint(sContratoId, userID, DateTimeSystem, cuotasPaga, String.valueOf(numero));
+							
+							Log.i("RESULTADO GRABA PAGO", sResultPrint);
+							
+							ListadoCobrosActivity.mMobilePrinter.printText("CREDI CHAPIN COBAN \n"+"RECIBO COBRO: "+ numero + "\nContrato:  " + sContratoId  + "\nNombres: " + sNombres + 
+									"\nMonto pagado:  " + sValCuotaFormat + "\nFrecuencia de Cobro: " + sPeriodoC + "\nFecha y hora de pago : "+DatePrint +  "\n\n\n\n\n\n\n\n", MobilePrinter.ALIGNMENT_LEFT,
 								MobilePrinter.TEXT_ATTRIBUTE_FONT_A, MobilePrinter.TEXT_SIZE_HORIZONTAL1, true);
 							
 							
 							HnCobro.sendEmptyMessage(2);
 							
+							
+							
 					}}.start();
 					Toast.makeText(DetalleCobroActivity.this, "Cobro procesado correctamente...!! ",  Toast.LENGTH_SHORT).show();
-					//Toast.makeText(DetalleCobroActivity.this, "Latitud: " + String.valueOf(latitud) + ","+ "Longitud: " + String.valueOf(longitud) + "\n", Toast.LENGTH_LONG).show();
-					//Toast.makeText(DetalleCobroActivity.this, "¡Cobro Procesado exitosamente!", Toast.LENGTH_SHORT).show();
+					
 				} else if (id == R.id.btnAviso) {
 					if(gps.canGetLocation())
 					{
@@ -527,23 +549,22 @@ import android.widget.Toast;
 				} else if (id == R.id.imgMapa) {
 					try{
 						
-						if( jSonLat.equals("") || jSonLong.equals(""))
+						if(gps.canGetLocation())
 						{
-							//finish();
-							Toast.makeText(DetalleCobroActivity.this, "No hay ubicación designada para éste cliente", Toast.LENGTH_SHORT).show();
-							
-						}else
-						{
-							iMapa = new Intent(DetalleCobroActivity.this, MapaMostrarActivity.class);
-							iMapa.putExtra("Latitud", String.valueOf(jSonLat));
-							iMapa.putExtra("Longitud", String.valueOf(jSonLong));
-							iMapa.putExtra("NombreC", sINombreC);
-							startActivity(iMapa);
-							Log.i("LATITUD DETALLE COBRO SALE", String.valueOf(jSonLat));
-							Log.i("LONGITUD DETALLE COBRO SALE",String.valueOf(jSonLong));
-							Log.i("NOMBRE CLIENTE SALE",sINombreC);
-														
+				            latitud = gps.getLatitude();
+				            longitud = gps.getLongitude();
 						}
+						
+							iMapa = new Intent(DetalleCobroActivity.this, MapaMostrarActivity.class);
+							iMapa.putExtra("Latitud", latitud);
+							iMapa.putExtra("Longitud", longitud);
+							iMapa.putExtra("NombreC", sNombres);
+							startActivity(iMapa);
+							Log.i("LATITUD DETALLE COBRO SALE", String.valueOf(latitud));
+							Log.i("LONGITUD DETALLE COBRO SALE", String.valueOf(longitud));
+							Log.i("NOMBRE CLIENTE SALE",sNombres);
+														
+					
 					
 					}catch(Exception e)
 					{

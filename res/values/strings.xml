@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">COMO V2.0</string>
+    <string name="app_name">COMO V3.0</string>
     <string name="title_connected_to">Conectado</string>
     <string name="title_connecting">Conectando con impresora&#8230;</string>
     <string name="title_not_connected">Impresora no conectada</string>
@@ -41,7 +41,7 @@
     <string name="strbtnCobro">Imprimir</string>
     <string name="strbtnAviso">Aviso</string>
     <string name="strbtnNota">Nota</string>
-    <string name="strbtnPrint">Recibo</string>
+    <string name="strbtnPrint">Cobrar</string>
     <string name="title_activity_display_photo">FOTO DISPLAY</string>
     <string name="hello_world">Hello world!</string>
     <string name="strPhotoTemp">zzzz</string>
@@ -77,7 +77,7 @@
     <string name="strbtnCancelarNota">Cancelar</string>
     <string name="strLblNoteString">Escriba su nota aquí</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_splas_screen"> </string>
+    <string name="title_activity_splas_screen">COMO 3.0 </string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="logo">imgVLogo</string>
@@ -92,6 +92,6 @@
     <string name="invalid_password">La contraseña es demasiado corta</string>
     <string name="incorrect_password">La contraseña es incorrecta</string>
     <string name="field_required">Éste campo es requerido</string>
-    <string name="title_activity_auth"></string>
+    <string name="title_activity_auth">Ingreso Usuario</string>
 
 </resources>

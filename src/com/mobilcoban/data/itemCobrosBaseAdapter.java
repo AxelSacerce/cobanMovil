@@ -82,13 +82,13 @@ public class itemCobrosBaseAdapter extends BaseAdapter
 		
 		// Obtengo la numercion de cada posicion + 1, por ser vector el list se suma 1 para que la 
 		// numerion con mience en 1 de lo contrario comineza en 0
-		holder.cobros_linea0.setText(itemDetailsArrayList.get(position).get_orden());
+		//holder.cobros_linea0.setText(itemDetailsArrayList.get(position));
 		
-		holder.cobros_linea1.setText("Código: " + itemDetailsArrayList.get(position).getid_Cliente());
-		holder.cobros_linea1_1.setText("Nombre: " + itemDetailsArrayList.get(position).getNombre());
-		holder.cobros_linea2.setText("Negocio: " + itemDetailsArrayList.get(position).getNegocio());
+		holder.cobros_linea1.setText("Código: " + itemDetailsArrayList.get(position).getid_Contrato());
+		holder.cobros_linea1_1.setText("Nombre: " + itemDetailsArrayList.get(position).getNombres());
+		holder.cobros_linea2.setText("Negocio: " + itemDetailsArrayList.get(position).getTelefono());
 		holder.cobros_linea3.setText("Direccion: " + itemDetailsArrayList.get(position).getDireccion());
-		//holder.ImagenCobrosIcono.setImageResource(R.drawable.cobros);
+		//holder.ImagenCobrosIcono.setImageResource(R.drawable.ic_getpayment_dp);
 				
 		return convertView;
 	}

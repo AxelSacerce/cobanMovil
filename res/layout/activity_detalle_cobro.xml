@@ -119,36 +119,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:layout_weight="2"
                 android:background="@drawable/btnfondoblue"
+                android:enabled="false"
                 android:text="@string/strbtnFoto"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
-                android:width="85dp"
-                android:layout_weight="2" />
+                android:width="85dp" />
 
             <Button
                 android:id="@+id/btnPrint"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:background="@drawable/btnfondogreen"
                 android:text="@string/strbtnPrint"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
-                android:width="85dp" 
-                android:layout_weight="2" />
+                android:width="85dp" />
 
             <Button
                 android:id="@+id/btnTakePhoto"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:background="@drawable/btnfondocorinto"
+                android:enabled="false"
                 android:text="@string/strTakePhoto"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
-                android:width="85dp"
-                android:layout_weight="2" />
+                android:width="85dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -160,11 +163,12 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/btnfondoyellow"
+                android:enabled="false"
                 android:text="@string/strbtnNota"
                 android:textSize="13sp"
-                android:width="80dp"
-                android:layout_weight="1" />
+                android:width="80dp" />
 
             <Button
                 android:id="@+id/btnAviso"
@@ -173,10 +177,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/btnfondorange"
+                android:enabled="false"
                 android:text="@string/strbtnAviso"
                 android:textSize="13sp"
-                android:width="85sp"
-                 />
+                android:width="85sp" />
 
             <Button
                 android:id="@+id/btnSendPhoto"
@@ -185,11 +189,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/btnfondogreendark"
+                android:enabled="false"
                 android:text="@string/strbtnSendPhoto"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
-                android:width="85dp" 
-                />
+                android:width="85dp" />
 
         </LinearLayout>
 

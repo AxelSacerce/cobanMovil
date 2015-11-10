@@ -118,10 +118,11 @@ public class MainActivity extends Activity implements OnClickListener{
   	}else if(id == R.id.btnPend){
   			
   		iListadosCobros = new Intent(MainActivity.this, ListadoCobrosActivity.class);
-  		iListadosCobros.putExtra("Id", "30");
-  		iListadosCobros.putExtra("Action", "1");
-  		iListadosCobros.putExtra("Limit", "300");
+  		iListadosCobros.putExtra("Id", "2");
   		iListadosCobros.putExtra("Filter", "1");
+  		/*iListadosCobros.putExtra("Action", "1");
+  		iListadosCobros.putExtra("Limit", "300");
+  		*/
   		startActivity(iListadosCobros);
   			
   	}else if(id == R.id.btnReali){

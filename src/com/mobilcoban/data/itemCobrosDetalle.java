@@ -1,35 +1,70 @@
 package com.mobilcoban.data;
 
 public class itemCobrosDetalle {
-	String sID_Cliente;
-    String sNombre;   
-    String sNombre_Negocio;
+	/*String sOrden;*/
+	String sID_Contrato;
+    String sNombres;   
+    String sTelefono;
     String sDireccion;
-    String sOrden;
+    String sPeriodoCobro;
+    String sMontoPago;
+    String sValorCuota;
+    String sCuotasNum;
+    
+    
+    
     //int iPosicion;
     
     
     
     // Getters    
-    public String get_orden()
+   /* public String get_orden()
     {
     	return sOrden;
+    }*/
+    
+    // 	Adicionales
+    
+    public String get_periodoCobro()
+    {
+    	
+    	return sPeriodoCobro;
     }
     
-    public String getid_Cliente()
+    public String get_MontoPago()
     {
-        return sID_Cliente;
+    		return sMontoPago;
+    	
+    }
+    
+    public String get_ValCuota()
+    {
+    	
+    		return sValorCuota;
+    }
+    
+    public String get_CuotasNum()
+    {
+    	
+    		return sCuotasNum;
+    }
+
+    // fin adicionales
+    
+    public String getid_Contrato()
+    {
+        return sID_Contrato;
     }
      
     
-    public String getNombre()
+    public String getNombres()
     {
-        return sNombre;
+        return sNombres;
     } 
     
-    public String getNegocio()
+    public String getTelefono()
     {
-        return sNombre_Negocio;
+        return sTelefono;
     }
     
     public String getDireccion()
@@ -47,24 +82,53 @@ public class itemCobrosDetalle {
     
     // Setters    
     
-    public void set_Orden(String data)
+    /*public void set_Orden(String data)
     {
     	this.sOrden = data;
+    }*/
+    
+    // Adicionales
+    
+    public void setPeriodo_Cobro(String data)
+    {
+    	this.sPeriodoCobro = data;
+    	
     }
     
-    public void setid_Cliente(String data)
+    public void setMontoPago(String data)
     {
-        this.sID_Cliente = data;
+    		this.sMontoPago = data;
+    	
+    }
+    
+    public void setValCuota(String data)
+    {
+    		this.sValorCuota = data;
+    	
+    }
+    
+    public void setCuotasNum(String data)
+    {
+    		this.sCuotasNum = data;
+    	
+    }
+
+    
+    // Fin Adicionales
+    
+    public void setid_Contrato(String data)
+    {
+        this.sID_Contrato = data;
     }
        
-    public void setNombre(String data)
+    public void setNombres(String data)
     {
-    	this.sNombre = data;
+    	this.sNombres = data;
     }
     
-    public void setNegocio(String data)
+    public void setTelefono(String data)
     {
-    	this.sNombre_Negocio = data;
+    	this.sTelefono = data;
     }   
         
     public void setDireccion(String data)

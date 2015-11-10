@@ -44,6 +44,7 @@ import com.zebra.printer.MobilePrinter;
 	String Limite;
 	String Filtro;
 	String strResultado;
+	private static final String TAG_DATA = "data";
 	
 	String TitleTxt;
 	String TitleTxt2;
@@ -54,9 +55,16 @@ import com.zebra.printer.MobilePrinter;
 	TextView Title;
 	private ProgressDialog DialogoCargar;
 	static String sID;
-	static String sNombre;
-	static String sNegocio;
+	static String sNombres;
+	static String sTelefono;
 	static String sDireccion;
+	static String sCobroPeriodo;
+	static String sMontoPrestamo;
+	static String sCuotaValor;
+	static String sCuotasNum;
+	
+	
+	
 	static MobilePrinter mMobilePrinter; // constante para manejo de imrpesora
 	int posicion;
 	
@@ -108,11 +116,29 @@ import com.zebra.printer.MobilePrinter;
 					// Si se recibe un JSON con arreglo el cual tiene nombre se recibe como objeto aplican las 
 					// variables comentadas arriga  JSONArray, JSONObject
 					//JSONObject jsCobros = new JSONObject(strResultado);
-					JSONArray  ArrayCobros = new JSONArray(strResultado);
+					//JSONArray  ArrayCobros = new JSONArray(strResultado);
+					
+					JSONArray ArrCobrosL  = null;
+					JSONObject jsCobros;
+					
+					try
+					{
+						
+						jsCobros = new JSONObject(strResultado);
+						ArrCobrosL = jsCobros.getJSONArray(TAG_DATA);
+						
+						
+					}catch(JSONException e)
+					{
+						e.printStackTrace();
+					}
+					
+					
 					
 								
-					if(ArrayCobros.length() == 0)
+					if(ArrCobrosL == null)
 					{
+						
 						Toast.makeText(ListadoCobrosActivity.this, "¡No hay Cobros disponibles para este día!", Toast.LENGTH_SHORT).show();
 						finish();
 						
@@ -120,23 +146,34 @@ import com.zebra.printer.MobilePrinter;
 					{
 					
 						itemCobrosDetalle itemDetails;
-						for(int i = 0; i < ArrayCobros.length(); i++)
+						for(int i = 0; i < ArrCobrosL.length(); i++)
 						{
-									JSONObject CobrosL = ArrayCobros.getJSONObject(i);
+									JSONObject CobrosL = ArrCobrosL.getJSONObject(i);
 									itemDetails = new itemCobrosDetalle();
-									itemDetails.set_Orden(CobrosL.getString("ORDEN"));
-									itemDetails.setid_Cliente(CobrosL.getString("ID"));
-									itemDetails.setNombre(CobrosL.getString("NOMBRE"));
-									itemDetails.setNegocio(CobrosL.getString("NEGOCIO"));
-									itemDetails.setDireccion(CobrosL.getString("DIRECCION"));
+									
+									itemDetails.setid_Contrato(CobrosL.getString("id"));  
+									itemDetails.setNombres(CobrosL.getString("nombres") + " " + CobrosL.getString("apellidos"));
+									itemDetails.setTelefono(CobrosL.getString("telefonos"));
+									itemDetails.setDireccion(CobrosL.getString("domicilio"));
+									itemDetails.setPeriodo_Cobro(CobrosL.getString("periodo_cobro"));
+									itemDetails.setMontoPago(CobrosL.getString("monto")) ;
+									itemDetails.setValCuota(CobrosL.getString("valor_cuota"));
+									itemDetails.setCuotasNum(CobrosL.getString("no_cuotas"));			
+									
+									
+									
+									
+									
+									
 									
 									lCobros.add(itemDetails);
 									
-									//Log.i("LISTADO", lCobros.toString());
+									//Log.i("TEST DATA: ", "Numero cuotas:  " + sCuotasNum + "Valor Cuota " + sCuotaValor );
 									//lCobros.add(arrayCobros.get(i).toString());
 														
 						}
-						Toast.makeText(getApplicationContext(), "Lista Cargada exitosamente...", Toast.LENGTH_SHORT).show();
+						
+						Toast.makeText(getApplicationContext(), "Lista cargada exitosamente...", Toast.LENGTH_SHORT).show();
 					}
 				}
 				catch (JSONException e)
@@ -212,9 +249,10 @@ import com.zebra.printer.MobilePrinter;
 				
 				Intent iLista = getIntent();
 				AppID = iLista.getStringExtra("Id");
-				Accion = iLista.getStringExtra("Action");
-				Limite = iLista.getStringExtra("Limit");
 				Filtro = iLista.getStringExtra("Filter");
+				/*Accion = iLista.getStringExtra("Action");
+				Limite = iLista.getStringExtra("Limit");
+				*/
 				
 				// Creo mis objetos
 				btnSalir = (ImageView)findViewById(R.id.imgInnerExit);
@@ -258,7 +296,8 @@ import com.zebra.printer.MobilePrinter;
 						super.run();
 						if(Filtro.contains("1"))
 						{
-						strResultado = NetworkWs.ListadoPendientes(AppID, Accion, Limite, Filtro);
+						strResultado = NetworkWs.ListadoPendientes(2);
+						
 						workHnd.sendEmptyMessage(1);
 						}else if(Filtro.contains("2"))
 						{
@@ -287,22 +326,36 @@ class ItemListener implements OnItemClickListener
 		Object o = lvlistCobros.getItemAtPosition(position);
 		
 		itemCobrosDetalle obj_itemDetails = (itemCobrosDetalle)o;
-		sID = obj_itemDetails.getid_Cliente();
-		sNombre = obj_itemDetails.getNombre();
-		sNegocio = obj_itemDetails.getNegocio();
+		sID = obj_itemDetails.getid_Contrato();
+		sNombres = obj_itemDetails.getNombres();
+		sTelefono= obj_itemDetails.getTelefono();
 		sDireccion=obj_itemDetails.getDireccion();	
+		sCobroPeriodo= obj_itemDetails.get_periodoCobro();
+		sMontoPrestamo = obj_itemDetails.get_MontoPago();
+		sCuotaValor = obj_itemDetails.get_ValCuota();
+		sCuotasNum = obj_itemDetails.get_CuotasNum();
+		
 		
 		System.out.println(position + "-----texto");
 		
 		Intent iCobros;	
-		iCobros = new Intent(ListadoCobrosActivity.this,DetalleCobroActivity.class);
-		iCobros.putExtra("Id", "30");
-		iCobros.putExtra("Action", "2");
-		iCobros.putExtra("CuotaId", sID);
-		iCobros.putExtra("Filter", Filtro);
+		iCobros = new Intent(ListadoCobrosActivity.this, DetalleCobroActivity.class);
+		iCobros.putExtra("id", sID);
+		iCobros.putExtra("nomnbres", sNombres);
+		iCobros.putExtra("telefono", sTelefono);
+		iCobros.putExtra("direccion", sDireccion);
+		iCobros.putExtra("periodoCobro", sCobroPeriodo );
+		iCobros.putExtra("montoPrest", sMontoPrestamo);
+		iCobros.putExtra("valorCuota", sCuotaValor);
+		iCobros.putExtra("NumCuotas", sCuotasNum);
+		
 		startActivity(iCobros);
 		
-		Log.i("SELECT DE LA LISTA ", sID.toString()+" " + "Id: 30" );
+		
+		
+		
+		Log.i("TAG_DATOS", "Monto Prestamo " +  sMontoPrestamo.toString());
+		//Log.i("SELECT DE LA LISTA ", sID.toString()+" " + sNombres.toString() );
 		mMobilePrinter.findBluetoothPrinters();   //Busca conexion a impresora
 		
 	}

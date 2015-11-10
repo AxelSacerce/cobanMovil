@@ -3,6 +3,7 @@ package com.mobilcoban.app;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -53,23 +54,42 @@ import android.widget.Toast;
 	// Detalle Cobro ----------------------------------
 	String sResultCobro;
 	String sResultAviso;
-	String sAppId;
-	String sAction;
-	String sCuotaId;
-	String sFiltro;
+	String sAppId; //borrar
+	String sAction; // borrar
+	String sCuotaId;// borrar
+	String sFiltro;// borrar
+	
+	String sContratoId;
+	String sNombres;
+	String sTelefono;
+	String sDireccion;
+	String sPeriodoC;
+	String sValCuota;
+	String sNumCuotas;
+	String sMontoPrest;
+	
+	
+	
+	
+	
+	
 	private ProgressDialog DialogoCargar;
+	
 	
 	
 		
 	// Asigno variables a los textview para setearlos con los datos de la respuestas del JSON
 	TextView sTContrato;
 	TextView sTNombre;
-	TextView sTNegocio;
+	TextView sTTelefono;
 	TextView sTDideccion;
-	TextView sTMontoBack;
-	TextView sTSaldoDia;
-	TextView sTCuotaDia;
-	TextView sTSaldoTot;
+	TextView sTMontoCuota;
+	TextView sTCuotasNum;
+	TextView sTMontoPrestamo;
+	TextView sTPeriodoCobro;
+
+	
+	
 	String sINombreC;
 	String sIquoteId;
 	String sICuotaDia;
@@ -102,11 +122,11 @@ import android.widget.Toast;
    	String ruta_fotografia = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/contratos/";
    	String str_imagen_fotografia;
     static	String DateTimePhoto;
-    boolean borrado = false; 
-    
-    static File mediaFile;
-   		
+    boolean borrado = false;     
+    static File mediaFile;   		
 	static MobilePrinter mMobilePrinter;
+	
+	DecimalFormat formato = new DecimalFormat("##,###,###.##");
 	
 	// Take Photo
 	
@@ -171,66 +191,7 @@ import android.widget.Toast;
 		public void handleMessage(Message msg) 
 		{
 			super.handleMessage(msg);
-			if(msg.what == 1)
-			{
-				DialogoCargar.dismiss();
-				
-				try
-				{
-					// Creo variable para contener el array de respuesta
-					JSONArray ArrayCobrar = new JSONArray(sResultCobro);
-					
-					if(ArrayCobrar.length() == 0)
-					{
-						Toast.makeText(DetalleCobroActivity.this, "No se ha generado cobro para este cliente", Toast.LENGTH_SHORT).show();
-                        finish();
-					}else
-					{
-						//CobroDetalleItems itemsObten;
-						
-						for(int i =0; i<ArrayCobrar.length(); i++)
-						{
-							JSONObject Jo = ArrayCobrar.getJSONObject(i);
-							//itemsObten = new CobroDetalleItems();
-							sTContrato.setText("Contrato: "+Jo.getString("ID_CONTRATO"));
-								sIquoteId = Jo.getString("ID_CONTRATO").toString();
-							sTNombre.setText("Nombre: "+Jo.getString("NOMBRE"));
-								sINombreC = Jo.getString("NOMBRE").toString();
-							sTNegocio.setText("Negocio: "+Jo.getString("NOMBRE_NEGOCIO"));
-							sTDideccion.setText("Dirección: "+Jo.getString("DIRECCION"));
-							sTMontoBack.setText("Monto atrasado: Q."+Jo.getString("MONTO_ATRASADO"));
-							sTCuotaDia.setText("Cuota del Día: Q."+Jo.getString("CUOTA_HOY"));
-								sICuotaDia= Jo.getString("CUOTA_HOY").toString();
-							sTSaldoDia.setText("Saldo para hoy: "+Jo.getString("SALDO_PARA_HOY"));
-							sTSaldoTot.setText("Saldo Total: "+Jo.getString("SALDO_TOTAL"));
-															
-							 if((Jo.getString("ULTIMA_LATITUD").toString()=="") || (Jo.getString("ULTIMA_LONGITUD").toString()==""))
-							 {
-								 jSonLat = "";
-								 jSonLong = "";
-								 
-								 Log.i("RECEPCION DATOS WEB SERVICE", "LATITUD " + String.valueOf(jSonLat) + " Valor Vacío" + " LONGITUD " + String.valueOf(jSonLong) + " Valor Vacío");
-							 }else
-							 {
-								 jSonLat=Jo.getString("ULTIMA_LATITUD").toString();
-								 jSonLong = Jo.getString("ULTIMA_LONGITUD").toString();
-								 Log.i("RECEPCION DATOS WEB SERVICE", "LATITUD " + String.valueOf(jSonLat) + " Valor con datos" + " LONGITUD " + String.valueOf(jSonLong) + " Valor con datos");
-							 }
-								
-						}				
-						
-						
-						Toast.makeText(getApplicationContext(), "¡Datos cargados!...", Toast.LENGTH_SHORT).show();
-						
-					}
-																
-				}catch(JSONException e)
-				{
-					e.getStackTrace();
-					Log.i("CAPTURA DE MENSAJE LOG", e.toString());
-				}
-				
-			}
+			
 			if (msg.what == 2)
 			{
 				DialogoCargar.dismiss();
@@ -383,20 +344,44 @@ import android.widget.Toast;
 			
 			sTContrato = (TextView)findViewById(R.id.lblTextContrato);
 			sTNombre = (TextView)findViewById(R.id.lblTextNombre);
-			sTNegocio = (TextView)findViewById(R.id.lblTextNegocio);
+			sTTelefono = (TextView)findViewById(R.id.lblTextNegocio);
 			sTDideccion = (TextView)findViewById(R.id.lblTextDireccion);
-			sTMontoBack = (TextView)findViewById(R.id.lblTextMontoAtraso);
-			sTCuotaDia = (TextView)findViewById(R.id.lblTextCuotaDia);
-			sTSaldoDia = (TextView)findViewById(R.id.lblTextSaldoDia);
-			sTSaldoTot = (TextView)findViewById(R.id.lblTextSaldoTot);
+			sTMontoPrestamo = (TextView)findViewById(R.id.lblTextMontoAtraso);
+			sTMontoCuota = (TextView)findViewById(R.id.lblTextCuotaDia);
+			sTCuotasNum = (TextView)findViewById(R.id.lblTextSaldoDia);
+			sTPeriodoCobro = (TextView)findViewById(R.id.lblTextSaldoTot);
 			
 			mapa = (ImageView)findViewById(R.id.imgMapa);
 			
 			Intent iCobrar = getIntent();
-			sAppId = iCobrar.getStringExtra("Id");
-			sAction = iCobrar.getStringExtra("Action");
-			sCuotaId =  iCobrar.getStringExtra("CuotaId");
-			sFiltro = iCobrar.getStringExtra("Filter");
+			sContratoId = iCobrar.getStringExtra("id");
+			sNombres = iCobrar.getStringExtra("nomnbres");
+			sTelefono =  iCobrar.getStringExtra("telefono");
+			sDireccion= iCobrar.getStringExtra("direccion");
+			sPeriodoC= iCobrar.getStringExtra("periodoCobro");
+			sValCuota= iCobrar.getStringExtra("valorCuota");
+			sNumCuotas = iCobrar.getStringExtra("NumCuotas");
+			sMontoPrest = iCobrar.getStringExtra("montoPrest").toString();
+			
+			Double dMontoCuota = Double.parseDouble(sValCuota);
+			Double dMontoPresta = Double.parseDouble(sMontoPrest);
+			
+			String sValCuotaFormat = formato.format(dMontoCuota); 
+			String sValPrestamo = formato.format(dMontoPresta);
+			   
+			
+			sTContrato.setText("Contrato No.: " +  sContratoId);
+			sTNombre.setText("Nombre Cliente:  " +  sNombres);
+			sTTelefono.setText("Teléfono:  " + sTelefono);
+			sTDideccion.setText("Dirección:  " + sDireccion);
+			sTPeriodoCobro.setText("Frecuencia de Cobro: "  + sPeriodoC);
+			sTMontoCuota.setText("Monto a pagar hoy: Q " + sValCuotaFormat)  ;
+			sTCuotasNum.setText("Numero de cuotas: " +  sNumCuotas);
+			sTMontoPrestamo.setText("Total del prestamo: Q " +  sValPrestamo);
+			
+			
+			
+			
 			
 			
 			// Creo Los Botones
@@ -414,45 +399,7 @@ import android.widget.Toast;
 			btnSendPhoto.setOnClickListener(listener);
 			
 			
-			// Creo dialogo cargar listado
-					DialogoCargar = new ProgressDialog(DetalleCobroActivity.this);
-					DialogoCargar.setMessage("Cargando Datos...");
-					DialogoCargar.setCancelable(false);
-					DialogoCargar.show();
 			
-				if(sFiltro.contains("3"))
-				{
-					
-					// Listener de botones
-					btnPhoto.setOnClickListener(listener);
-					btnImprimir.setOnClickListener(listener);
-					btnNotice.setOnClickListener(listener);
-					
-					btnNote.setOnClickListener(listener);
-					btnSendPhoto.setEnabled(false);
-					btnSendPhoto.setBackground(getResources().getDrawable(R.drawable.btnfondogrey));
-					
-				}else if(sFiltro.contains("2"))
-				{
-									
-					/*btnNotice.setEnabled(false);
-					btnNotice.setBackground(getResources().getDrawable(R.drawable.btnfondogrey));*/
-					
-					btnNotice.setOnClickListener(listener);
-					btnImprimir.setEnabled(false);
-					btnImprimir.setBackground(getResources().getDrawable(R.drawable.btnfondogrey));
-					
-					
-					// Listener de botones
-					btnPhoto.setOnClickListener(listener);
-					btnNote.setOnClickListener(listener);
-					btnSendPhoto.setEnabled(false);
-					btnSendPhoto.setBackground(getResources().getDrawable(R.drawable.btnfondogrey));
-					
-					
-								
-				}else if(sFiltro.contains("1"))
-				{
 					// Listener de botones
 					btnPhoto.setOnClickListener(listener);
 					btnImprimir.setOnClickListener(listener);
@@ -461,7 +408,7 @@ import android.widget.Toast;
 					btnNote.setOnClickListener(listener);
 					btnSendPhoto.setEnabled(false);
 					btnSendPhoto.setBackground(getResources().getDrawable(R.drawable.btnfondogrey));
-				}
+				
 					
 					
 					

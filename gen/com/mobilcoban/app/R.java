@@ -510,18 +510,19 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f020026;
         public static final int common_signin_btn_text_pressed_light=0x7f020027;
         public static final int exit=0x7f020028;
-        public static final int ic_launcher=0x7f020029;
-        public static final int ic_plusone_medium_off_client=0x7f02002a;
-        public static final int ic_plusone_small_off_client=0x7f02002b;
-        public static final int ic_plusone_standard_off_client=0x7f02002c;
-        public static final int ic_plusone_tall_off_client=0x7f02002d;
-        public static final int iconmap=0x7f02002e;
-        public static final int logoscreen=0x7f02002f;
-        public static final int mapa=0x7f020030;
-        public static final int powered_by_google_dark=0x7f020031;
-        public static final int powered_by_google_light=0x7f020032;
-        public static final int radialback=0x7f020033;
-        public static final int salir=0x7f020034;
+        public static final int ic_getpayment_dp=0x7f020029;
+        public static final int ic_launcher=0x7f02002a;
+        public static final int ic_plusone_medium_off_client=0x7f02002b;
+        public static final int ic_plusone_small_off_client=0x7f02002c;
+        public static final int ic_plusone_standard_off_client=0x7f02002d;
+        public static final int ic_plusone_tall_off_client=0x7f02002e;
+        public static final int iconmap=0x7f02002f;
+        public static final int logoscreen=0x7f020030;
+        public static final int mapa=0x7f020031;
+        public static final int powered_by_google_dark=0x7f020032;
+        public static final int powered_by_google_light=0x7f020033;
+        public static final int radialback=0x7f020034;
+        public static final int salir=0x7f020035;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080037;
@@ -795,12 +796,12 @@ containing a value of this type.
         public static final int decline=0x7f070003;
         public static final int dummy_button=0x7f070071;
         public static final int dummy_content=0x7f070072;
-        public static final int field_required=0x7f07007b;
+        public static final int field_required=0x7f07007a;
         public static final int hello_blank_fragment=0x7f07006f;
         public static final int hello_world=0x7f070050;
-        public static final int incorrect_password=0x7f07007a;
-        public static final int invalid_password=0x7f070079;
-        public static final int invalid_user=0x7f070078;
+        public static final int incorrect_password=0x7f070079;
+        public static final int invalid_password=0x7f070078;
+        public static final int invalid_user=0x7f070077;
         /**  Dialogo salir 
          */
         public static final int lblAccion=0x7f070042;
@@ -826,11 +827,11 @@ containing a value of this type.
         /**  Barra de búsqueda 
          */
         public static final int mnSearch=0x7f07005b;
-        public static final int prompt_password=0x7f070076;
-        public static final int prompt_user=0x7f070075;
+        public static final int prompt_password=0x7f070075;
+        public static final int prompt_user=0x7f070074;
         public static final int store_picture_message=0x7f070001;
         public static final int store_picture_title=0x7f070000;
-        public static final int strIngresar=0x7f070077;
+        public static final int strIngresar=0x7f070076;
         public static final int strLblNoteString=0x7f07006e;
         public static final int strLinea1=0x7f07003d;
         public static final int strLinea2=0x7f07003e;
@@ -863,7 +864,7 @@ containing a value of this type.
         public static final int strlblNote=0x7f07006b;
         public static final int strlblRecordatorios=0x7f070058;
         public static final int strlblRuta=0x7f070036;
-        public static final int title_activity_auth=0x7f070074;
+        public static final int title_activity_auth=0x7f07007b;
         public static final int title_activity_aviso_pago=0x7f070055;
         public static final int title_activity_detalle_cobro=0x7f070048;
         public static final int title_activity_detalle_cobro_recordatorio=0x7f07005c;

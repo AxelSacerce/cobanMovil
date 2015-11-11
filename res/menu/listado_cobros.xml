@@ -7,12 +7,14 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/mnPrincipal"/>
-    <item 
+    
+    <!--  <item 
+        
         android:id="@+id/action_search" 
         android:showAsAction="always"
 		android:title="@string/mnSearch"
 		android:icon="@android:drawable/ic_menu_search"
-		android:actionViewClass="android.widget.SearchView" />
+		android:actionViewClass="android.widget.SearchView" /> -->
     
    <!--  <item 
         android:id="@+id/mnBluetooth"

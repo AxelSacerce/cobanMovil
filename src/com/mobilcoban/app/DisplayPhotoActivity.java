@@ -212,7 +212,7 @@ import android.widget.Toast;
             public void run() {
                 // TODO Auto-generated method stub
                 super.run();
-                sResultImageB64 = NetworkWs.DetalleCobro(sIntGetCuotaId, sIntGetAppId, sIntGetAccion);
+                //sResultImageB64 = NetworkWs.DetalleCobro(sIntGetCuotaId, sIntGetAppId, sIntGetAccion);
                 hPhoto.sendEmptyMessage(1);
             }
                         

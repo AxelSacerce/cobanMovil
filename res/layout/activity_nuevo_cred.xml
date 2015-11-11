@@ -1,0 +1,166 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/radialback_inner"
+    android:gravity="start"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mobilcoban.app.NuevoCredActivity" >
+
+    <ScrollView
+        android:id="@+id/scrNuevoContrato"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="394dp"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/txtNombresCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblNombresCl"
+                android:inputType="text"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/txtApellidosC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblApellidos"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/txtIdentificacionCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblIdentificacionC"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/txtFechaNacCl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="@string/strlblFechaNacCl"
+                android:inputType="date"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtDireccionCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblDireccionCl"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/txtTelefonoCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblTelefono"
+                android:inputType="phone"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/txtMontoPrestamoCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/strlblMontoPrestamoCl"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/lblPeriodoCobroCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strlblPeriodoCobro"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spnPeriodoCobro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:id="@+id/lblCuotasNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strlblNumCuotaCl"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spnCuotasPrest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnEnvSolCred"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scrNuevoContrato"
+        android:layout_below="@+id/scrNuevoContrato"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/btnfondogreen"
+        android:drawableTop="@drawable/ic_send_approval"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:text="@string/strbtnEnvSolCred" />
+
+    <Button
+        android:id="@+id/btnCancelSolCred"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnEnvSolCred"
+        android:layout_alignBottom="@+id/btnEnvSolCred"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/btnEnvSolCred"
+        android:background="@drawable/btnfondored"
+        android:drawableTop="@drawable/ic_cancel_approval"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:text="@string/strbtnCancelSolCred" />
+
+</RelativeLayout>

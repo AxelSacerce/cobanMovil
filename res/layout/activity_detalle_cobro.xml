@@ -3,6 +3,7 @@
     android:id="@+id/lyContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/radialback_inner"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -24,9 +25,11 @@
             android:id="@+id/lyTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
             tools:ignore="UseCompoundDrawables" >
 
             <TextView
@@ -36,7 +39,8 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="@string/strlblCobro"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#FFFFFF" />
 
             <ImageView
                 android:id="@+id/imgMapa"
@@ -52,28 +56,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextNegocio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextDireccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextMontoAtraso"
@@ -81,21 +89,23 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FF0000"
-            android:textSize="13sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextCuotaDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextSaldoDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTextSaldoTot"
@@ -103,96 +113,47 @@
             android:layout_height="wrap_content"
             android:height="50dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="13sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="8"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/btnFoto"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="2"
-                android:background="@drawable/btnfondoblue"
-                android:enabled="false"
-                android:text="@string/strbtnFoto"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:width="85dp" />
+            android:orientation="horizontal"
+            android:weightSum="8" >
 
             <Button
                 android:id="@+id/btnPrint"
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:background="@drawable/btnfondogreen"
+                android:drawableTop="@drawable/ic_pay"
+                android:gravity="bottom|left|center_vertical|center_horizontal|center|clip_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="@string/strbtnPrint"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
+                android:textColor="#000000"
+                android:textSize="20sp"
                 android:width="85dp" />
-
-            <Button
-                android:id="@+id/btnTakePhoto"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/btnfondocorinto"
-                android:enabled="false"
-                android:text="@string/strTakePhoto"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:width="85dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/btnNota"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btnfondoyellow"
-                android:enabled="false"
-                android:text="@string/strbtnNota"
-                android:textSize="13sp"
-                android:width="80dp" />
 
             <Button
                 android:id="@+id/btnAviso"
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:background="@drawable/btnfondorange"
-                android:enabled="false"
+                android:drawableTop="@drawable/ic_message"
+                android:gravity="bottom|left|center_vertical|center_horizontal|center|clip_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="@string/strbtnAviso"
-                android:textSize="13sp"
-                android:width="85sp" />
-
-            <Button
-                android:id="@+id/btnSendPhoto"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btnfondogreendark"
-                android:enabled="false"
-                android:text="@string/strbtnSendPhoto"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
+                android:textColor="#000000"
+                android:textSize="20sp"
                 android:width="85dp" />
 
         </LinearLayout>

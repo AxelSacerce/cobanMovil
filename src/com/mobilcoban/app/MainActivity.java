@@ -4,12 +4,12 @@ package com.mobilcoban.app;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
+//import android.app.AlertDialog;
+//import android.content.Context;
+//import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+//import android.net.ConnectivityManager;
+//import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,15 +26,15 @@ public class MainActivity extends Activity implements OnClickListener{
 	Button btnPend, btnReali,btnRecordar;
 	ImageView imgBtnImage;
 	private Intent iListadosCobros;
-	private Intent iListadoCobReali; //Listado Cobros Realizados en el día 
-	private Intent iListadoRecord;   // Listado Recordatorios
+	private Intent iNuevoContrato; //Nuevos Contratos 
+	
 	//private Intent iListodoRecordar; // Listado de Clientes que se les dejó recordatorios
 	
 		//----------------------------------------------------
 	
 	
 	
-	
+	/*
 	// verifica si existe conexion a internet
 	 public static boolean verificaConexion(Context ctx) {
 		    boolean bConectado = false;
@@ -50,46 +50,19 @@ public class MainActivity extends Activity implements OnClickListener{
 		        }
 		    }
 		    return bConectado;
-		}
+		}*/
 	
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       
-      if (verificaConexion(this) == false) {
-      	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle(getResources().getString(R.string.lblAccion).toString());
-			builder.setMessage(getResources().getString(R.string.lblSeguroExit).toString());
-			builder.setPositiveButton(getResources().getString(R.string.lblSi).toString(), new DialogInterface.OnClickListener() {
-
-			    public void onClick(DialogInterface dialog, int which) {
-			    	
-			    	System.exit(0);
-			        
-			    }
-			
-			});
-			
-			/*builder.setNegativeButton(getResources().getString(R.string.lblNo).toString(), new DialogInterface.OnClickListener() {
-
-			    @Override
-			    public void onClick(DialogInterface dialog, int which) {
-			    	
-			        dialog.cancel();
-			    }
-			});*/			
-
-
-			AlertDialog alert = builder.create();
-			alert.show();
-      }else
-      {
+      
       // Creo mis botones
       
       btnPend = (Button)findViewById(R.id.btnPend);
       btnReali = (Button)findViewById(R.id.btnReali);
-      btnRecordar = (Button)findViewById(R.id.btnRecordar);
+      /*btnRecordar = (Button)findViewById(R.id.btnRecordar);*/
       
       // Imagen boton
       imgBtnImage =(ImageView)findViewById(R.id.imgSalir); 
@@ -97,14 +70,14 @@ public class MainActivity extends Activity implements OnClickListener{
       // Creo el Listener para los botones        
       btnPend.setOnClickListener(this);
       btnReali.setOnClickListener(this);
-      btnRecordar.setOnClickListener(this);
+      /*btnRecordar.setOnClickListener(this);*/
      
       
       // Creo el Listener de la imagen
       imgBtnImage.setOnClickListener(this);
       
       }     
-  }
+
    
   @SuppressLint("SimpleDateFormat") 
   @Override
@@ -127,37 +100,12 @@ public class MainActivity extends Activity implements OnClickListener{
   			
   	}else if(id == R.id.btnReali){
   		
-  		iListadoCobReali = new Intent(MainActivity.this,ListadoCobrosActivity.class);
-  		iListadoCobReali.putExtra("Id", "30");
-  		iListadoCobReali.putExtra("Action", "1");
-  		iListadoCobReali.putExtra("Limit", "300");
-  		iListadoCobReali.putExtra("Filter", "2");
-  		startActivity(iListadoCobReali);
+  		iNuevoContrato = new Intent(MainActivity.this, NuevoCredActivity.class);
+  		iNuevoContrato.putExtra("soli", "2");  		
+  		startActivity(iNuevoContrato);
   		
-  	}else if(id == R.id.btnRecordar){
-  		/* String Time;
-    		 Calendar cal = Calendar.getInstance(); 
-
-    		 int Day = cal.get(Calendar.DAY_OF_MONTH);
-    		 int Month = cal.get(Calendar.MONTH);
-    		 int Year = cal.get(Calendar.YEAR);
-    		 int HH = cal.get(Calendar.HOUR_OF_DAY);
-    		 int MM = cal.get(Calendar.MINUTE);
-    		 int SS = cal.get(Calendar.SECOND);
-    		
-    		 Time = Year + "-" + Month +"-"+ Day + " " + HH + ":" + MM +":"+ SS;
-    		  
-    		  
-    		Toast.makeText(getApplicationContext(),Time, Toast.LENGTH_LONG).show();*/
-     		
-     		iListadoRecord = new Intent(MainActivity.this,ListadoCobrosActivity.class);
-     		iListadoRecord.putExtra("Id", "30");
-     		iListadoRecord.putExtra("Action", "1");
-     		iListadoRecord.putExtra("Limit", "10");
-     		iListadoRecord.putExtra("Filter", "3");
-     		//iListadoRecord.putExtra("Xnow", Time);
-     		startActivity(iListadoRecord);
   	}
+  	
   }
   	
   

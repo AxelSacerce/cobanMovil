@@ -87,34 +87,31 @@ public class NetworkWs
 		
 	
 	// Detalle de cobro
-		public static String DetalleCobro(String quote ,String Id, String Action)
+		public static String NewContract(String sMonto ,String sNo_quote, String sPeriodo, String sSolicitaPor, String sSolicitaEn,
+							String sNombres, String sApellidos, String sIDpi, String sFechaNac, String sDirecc, String sTelefonos)
 		{
 			String result="";
 			ArrayList<NameValuePair> params;
 			params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("quoteID", quote));
-			params.add(new BasicNameValuePair("appID", Id));
-			params.add(new BasicNameValuePair("action", Action));
-			result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
+			params.add(new BasicNameValuePair("monto", sMonto));
+			params.add(new BasicNameValuePair("no_cuotas", sNo_quote));
+			params.add(new BasicNameValuePair("periodo_cobro", sPeriodo));
+			params.add(new BasicNameValuePair("solicitado_por", sSolicitaPor));
+			params.add(new BasicNameValuePair("solicitado_en", sSolicitaEn));
+			params.add(new BasicNameValuePair("nombres", sNombres));
+			params.add(new BasicNameValuePair("apellidos", sApellidos));
+			params.add(new BasicNameValuePair("identificacion", sIDpi));
+			params.add(new BasicNameValuePair("fecha_nacimiento", sFechaNac));
+			params.add(new BasicNameValuePair("domicilio", sDirecc));
+			params.add(new BasicNameValuePair("telefonos", sTelefonos));			
+			result = POSTData("http://dev-wagadelta.c9.io/api/contratos",params);
 			return result;
 		}
 	
-	// Foto
-		public static String Photo(String quote ,String Id, String Action)
-		{
-			String result="";
-			ArrayList<NameValuePair> params;
-			params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("quoteID", quote));
-			params.add(new BasicNameValuePair("appID", Id));
-			params.add(new BasicNameValuePair("action", Action));
-			result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
-			return result;
-		}
 	
 	
 	// Cobro Confirmacion  Realizado
-		public static String CobroPrint(String contratoId ,String userId, String datePay, String quotePay,  String numVoucher)
+		public static String CobroPrint(String contratoId ,String userId, String datePay, String quotePay, String numVoucher, String tipo)
 		{
 			
 			String result="";
@@ -124,49 +121,31 @@ public class NetworkWs
 			params.add(new BasicNameValuePair("id_usuario", userId));
 			params.add(new BasicNameValuePair("fecha_pago", datePay));
 			params.add(new BasicNameValuePair("cuotas_pagadas", quotePay));
-			params.add(new BasicNameValuePair("no_recibo", numVoucher));
+			params.add(new BasicNameValuePair( tipo, numVoucher));
 			
 			
 			result = POSTData("http://dev-wagadelta.c9.io/api/cobros",params);
 			return result;
 		}
-	
-	
-	// Aviso Cobro
-		public static String avisoD(String quote ,String Id, String Action,  String Latitud, String Longitud)
-		{
-			
-			String result="";
-			ArrayList<NameValuePair> params;
-			params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("quoteID", quote));
-			params.add(new BasicNameValuePair("appID", Id));
-			params.add(new BasicNameValuePair("action", Action));
-			params.add(new BasicNameValuePair("LATITUDE", Latitud));
-			params.add(new BasicNameValuePair("LONGITUDE", Longitud));
-			
-			result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
-			return result;
-		}
 		
 		
-	// Grabar nota
-		public static String SetNote( String quote, String Id, String Action, String Note,  String Latitud, String Longitud)
-		{
+		
+		// Foto
+				public static String Photo(String quote ,String Id, String Action)
+				{
+					String result="";
+					ArrayList<NameValuePair> params;
+					params = new ArrayList<NameValuePair>();
+					params.add(new BasicNameValuePair("quoteID", quote));
+					params.add(new BasicNameValuePair("appID", Id));
+					params.add(new BasicNameValuePair("action", Action));
+					result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
+					return result;
+				}
 			
-			String result="";
-			ArrayList<NameValuePair> params;
-			params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("quoteID", quote));
-			params.add(new BasicNameValuePair("appID", Id));
-			params.add(new BasicNameValuePair("action", Action));
-			params.add(new BasicNameValuePair("NOTE", Note));
-			params.add(new BasicNameValuePair("LATITUDE", Latitud));
-			params.add(new BasicNameValuePair("LONGITUDE", Longitud));
-			
-			result = POSTData("http://crm.t4msports.com/webservice/ws.php",params);
-			return result;
-		}
+	
+	
+	
 		
 	// Subir Imagen
 		public static String CargarFoto( String quote, String Id, String Action, String Image,  String Nombre)

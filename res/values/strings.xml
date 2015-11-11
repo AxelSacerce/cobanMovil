@@ -13,7 +13,7 @@
     <string name="mnDetalle_cobro">Detalle Cobro</string>
     <string name="strlblRuta">VER RUTA DE COBRO</string>
     <string name="strbtnPend">PENDIENTES</string>
-    <string name="strbtnReali">REALIZADOS</string>
+    <string name="strbtnReali">NUEVO CONTRATO</string>
     <string name="strbtnRecordar">C/RECORDATORIO</string>
     <string name="strbtnSalir">Salir</string>
     <string name="title_activity_listado_cobros">Ruta del día</string>
@@ -81,17 +81,34 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="logo">imgVLogo</string>
-    
     <string name="prompt_user">Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="strIngresar">Ingresar</string>
-    
-    
-    
     <string name="invalid_user">Éste usuario es inválido</string>
     <string name="invalid_password">La contraseña es demasiado corta</string>
     <string name="incorrect_password">La contraseña es incorrecta</string>
     <string name="field_required">Éste campo es requerido</string>
     <string name="title_activity_auth">Ingreso Usuario</string>
+    
+    
+    
+    <string name="strNuevoCl">NUEVO CONTRATO</string>
+    <string name="strlblNuevoCl">Monto:</string>
+    <string name="strlblCuotasNuevoCl">No. Cuotas:</string>
+    <string name="strlblPeriodoNuevoCl">Período Cobro:</string>
+    <string name="strFechaNuevaSoli">Solicitado el:</string>
+    <string name="strlblNombresCl">Nombres:</string>
+    <string name="title_activity_nuevo_cred">NUEVO CONTRATO</string>
+    <string name="strlblApellidos">Apellidos:</string>
+    <string name="strlblIdentificacionC">Identifiación:</string>
+    <string name="strlblFechaNacCl">Seleccione fecha nacimiento:</string>
+    <string name="strlblDireccionCl">Dirección:</string>
+    <string name="strlblTelefono">Teléfono:</string>
+    <string name="strlblMontoPrestamoCl">Monto Préstamo:</string>
+    <string name="strlblPeriodoCobro">Período cobro:</string>
+    <string name="strlblNumeroCuotasCl"></string>
+    <string name="strlblNumCuotaCl">No. Cuotas:</string>
+    <string name="strbtnEnvSolCred">Enviar</string>
+    <string name="strbtnCancelSolCred">Cancelar</string>
 
 </resources>

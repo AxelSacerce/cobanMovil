@@ -110,5 +110,6 @@
     <string name="strlblNumCuotaCl">No. Cuotas:</string>
     <string name="strbtnEnvSolCred">Enviar</string>
     <string name="strbtnCancelSolCred">Cancelar</string>
+    <string name="strbtnCerrar">Cerrar</string>
 
 </resources>

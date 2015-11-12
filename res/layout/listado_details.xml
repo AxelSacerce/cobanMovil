@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="15dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/cobros_linea0"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="12sp" />
 
 		<!-- android:layout_toRightOf="@id/imagenCobro" -->
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cobros_linea1"
         android:layout_toRightOf="@+id/cobros_linea0"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="12sp" />
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cobros_linea1_1"
         android:layout_toRightOf="@+id/cobros_linea0"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="12sp" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cobros_linea2"
         android:layout_toRightOf="@+id/cobros_linea0"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="12sp" />
 
 </RelativeLayout>

@@ -20,6 +20,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +28,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -267,7 +267,7 @@ import com.zebra.printer.MobilePrinter;
 					
 				// Creo dialogo cargar listado
 				DialogoCargar = new ProgressDialog(ListadoCobrosActivity.this);
-				DialogoCargar.setMessage("Cargando Listado...");
+				DialogoCargar.setMessage("Cargando listado...");
 				DialogoCargar.setCancelable(false);
 				DialogoCargar.show();
 				
@@ -355,6 +355,7 @@ class ItemListener implements OnItemClickListener
 		Log.i("TAG_DATOS", "Monto Prestamo " +  sMontoPrestamo.toString());
 		//Log.i("SELECT DE LA LISTA ", sID.toString()+" " + sNombres.toString() );
 		mMobilePrinter.findBluetoothPrinters();   //Busca conexion a impresora
+		
 		
 	}
 

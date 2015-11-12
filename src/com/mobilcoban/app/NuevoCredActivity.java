@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.mobilcoban.data.NetworkWs;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
@@ -30,7 +31,7 @@ import android.widget.Toast;
 public class NuevoCredActivity extends Activity implements OnClickListener{
 	
 	// botones variables
-	Button btnEnviar, btnCancelar;
+	Button btnEnviar, btnCancelar, btnCerrar;
 	
 	//Edit texts
 	EditText txtNombres, txtApellidos, txtDpi, txtDate, txtDirec, txtTel, txtMonto;
@@ -51,6 +52,7 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 	
 	// Dialogo
 	private ProgressDialog DialogoCargar;
+	private ProgressDialog DialogoCerrar;
 	
 	
 	private String periodo[], cuotas[];
@@ -62,7 +64,7 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 	
 	
 	
-	public Handler HnNuevoContrato = new Handler()
+	@SuppressLint("HandlerLeak") public Handler HnNuevoContrato = new Handler()
     {
 
         @Override
@@ -92,6 +94,12 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
                         finish();
                     }else if(ArrayPrint.equals("true"))
                     {
+                    	
+                    	
+                    	
+                    	
+                    	
+                    	
                         /*CobroDetalleItems itemsObten;
                         
                         for(int i =0; i<ArrayPrint.length(); i++)
@@ -102,7 +110,8 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
                             sPrintMessage = Jo.getString("MESSAGE").toString();
                                                         
                         }           */  
-                        
+                    	
+                    	                        
                         Toast.makeText(NuevoCredActivity.this, "Solicitud enviada..", Toast.LENGTH_SHORT).show();
                         
                         //Log.i("PRINT", sPrintMessage);
@@ -177,6 +186,9 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 		btnCancelar = (Button) findViewById(R.id.btnCancelSolCred);
 		btnCancelar.setOnClickListener(this);
 		
+		btnCerrar = (Button) findViewById(R.id.btnCerrar);
+		btnCerrar.setOnClickListener(this);
+		
 		// creo data para el spinner Período
 		
 		periodo= new String[4];
@@ -193,15 +205,20 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 		spPeriodo.setAdapter(adpPeriodo);
 
 		
-		cuotas= new String[8];
-		cuotas[0]="24"; 
-		cuotas[1]="30"; 
-		cuotas[2]="60";
-		cuotas[3]="90";
-		cuotas[4]="120";
-		cuotas[5]="150";
-		cuotas[6]="180";
-		cuotas[7]="210";
+		cuotas= new String[10];
+		cuotas[0]="6"; 
+		cuotas[1]="10"; 
+		cuotas[2]="12";
+		cuotas[3]="24";
+		cuotas[4]="36";
+		cuotas[5]="100";
+		cuotas[6]="150";
+		cuotas[7]="290";
+		cuotas[8]="300";
+		cuotas[9]="315";
+		
+		
+		
 		
 		spCuotas = (Spinner) findViewById(R.id.spnCuotasPrest);
 		
@@ -217,6 +234,10 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 		Intent iContratoNuevo = getIntent();
 		sExtSoliPor = iContratoNuevo.getStringExtra("soli");
 		
+		
+		DialogoCargar = new ProgressDialog(NuevoCredActivity.this);
+		DialogoCerrar = new ProgressDialog(NuevoCredActivity.this);
+        
 	}
 	
 	
@@ -230,18 +251,11 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 		{
 			
 			
+			DialogoCargar.setMessage("Espere un momento mientras la informacion es enviada para aprobación...");
+	        DialogoCargar.setCancelable(false);
+	        DialogoCargar.show();
             
-            sEnvMonto 		=  txtMonto.getText().toString(); 
-            sEnvNo_quote 	=  spCuotas.getSelectedItem().toString();
-            sEnvPeriodo		=  spPeriodo.getSelectedItem().toString();
-            sEnvSolicitaPor	=  sExtSoliPor.toString();
-        	sEnvSolicitaEn	=  fechaHoraActual();
-        	sEnvNombres		=  txtNombres.getText().toString();
-        	sEnvApellidos	=  txtApellidos.getText().toString();
-        	sEnvIDpi		=  txtDpi.getText().toString();
-        	sEnvFechaNac	=  txtDate.getText().toString();
-        	sEnvDirecc		=  txtDirec.getText().toString();
-        	sEnvTelefonos	=  txtTel.getText().toString();
+            
 
         	
         	
@@ -252,12 +266,21 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 				public void run() {
 					// TODO Auto-generated method stub
 					
-					
+					sEnvMonto 		=  txtMonto.getText().toString(); 
+		            sEnvNo_quote 	=  spCuotas.getSelectedItem().toString();
+		            sEnvPeriodo		=  spPeriodo.getSelectedItem().toString();
+		            sEnvSolicitaPor	=  sExtSoliPor.toString();
+		        	sEnvSolicitaEn	=  fechaHoraActual();
+		        	sEnvNombres		=  txtNombres.getText().toString();
+		        	sEnvApellidos	=  txtApellidos.getText().toString();
+		        	sEnvIDpi		=  txtDpi.getText().toString();
+		        	sEnvFechaNac	=  txtDate.getText().toString();
+		        	sEnvDirecc		=  txtDirec.getText().toString();
+		        	sEnvTelefonos	=  txtTel.getText().toString();
+		        	
 					sResultNuevoContrato = NetworkWs.NewContract(sEnvMonto, sEnvNo_quote, sEnvPeriodo, sEnvSolicitaPor,	sEnvSolicitaEn, sEnvNombres, sEnvApellidos, sEnvIDpi, sEnvFechaNac, sEnvDirecc, sEnvTelefonos);
 					
-					
-					
-					
+						
 					
 					
 					
@@ -275,18 +298,36 @@ public class NuevoCredActivity extends Activity implements OnClickListener{
 					
 					
 					HnNuevoContrato.sendEmptyMessage(1);
-					Toast.makeText(getApplicationContext(), "Solicitud enviada" + " Fecha: "+ txtDate.getText().toString() , Toast.LENGTH_SHORT).show();
-					finish();
+					
+					
+					
 					
 				}}.start();
-            
+				
+			          
             
 				
 			
 		}else if(id == R.id.btnCancelSolCred)
 		{
-			Toast.makeText(this, "Solicitud Cancelada", Toast.LENGTH_SHORT).show();
-			finish();
+			
+			txtMonto.setText(""); 
+            txtNombres.setText("");
+        	txtApellidos.setText("");
+        	txtDpi.setText("");
+        	txtDate.setText("");
+        	txtDirec.setText("");
+        	txtTel.setText("");
+			
+			
+		}else if(id == R.id.btnCerrar)
+		{
+			DialogoCerrar.setMessage("Cerrando....");
+			DialogoCerrar.setCancelable(false);
+			DialogoCerrar.show();
+			
+			System.exit(0);
+			
 		}
 		
 	}

@@ -28,29 +28,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private Intent iListadosCobros;
 	private Intent iNuevoContrato; //Nuevos Contratos 
 	
-	//private Intent iListodoRecordar; // Listado de Clientes que se les dejó recordatorios
 	
-		//----------------------------------------------------
-	
-	
-	
-	/*
-	// verifica si existe conexion a internet
-	 public static boolean verificaConexion(Context ctx) {
-		    boolean bConectado = false;
-		    ConnectivityManager connec = (ConnectivityManager) ctx
-		            .getSystemService(Context.CONNECTIVITY_SERVICE);
-		    // No sólo wifi, también GPRS
-		    NetworkInfo[] redes = connec.getAllNetworkInfo();
-		    // este bucle debería no ser tan ñapa
-		    for (int i = 0; i < redes.length; i++) {
-		        // ¿Tenemos conexión? ponemos a true
-		        if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
-		            bConectado = true;
-		        }
-		    }
-		    return bConectado;
-		}*/
 	
   @Override
   protected void onCreate(Bundle savedInstanceState) {

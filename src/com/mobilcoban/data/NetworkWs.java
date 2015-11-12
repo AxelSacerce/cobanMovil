@@ -47,7 +47,7 @@ public class NetworkWs
 		params = null;
 				
 		result = GETData("http://dev-wagadelta.c9.io/api/users/"+user,params);
-		Log.i("RESULTADO DATA", result);
+		//Log.i("RESULTADO DATA", result);
 		return result;
 	}
 	

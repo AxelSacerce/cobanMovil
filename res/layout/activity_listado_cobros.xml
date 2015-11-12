@@ -3,7 +3,7 @@
     android:id="@+id/continer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/radialback_inner"
+    android:background="@drawable/radialback_new_contract"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -28,17 +28,20 @@
             android:paddingRight="4dp"
             android:text="@string/lblCobrosPend"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFF" />
+            android:textColor="#000000" />
 
     </LinearLayout>
     
     <ListView
         android:id="@+id/lvlistado"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="?android:attr/listDivider"
-        android:drawSelectorOnTop="true"
-        android:footerDividersEnabled="true" >
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:addStatesFromChildren="true"
+        android:divider="@color/black_overlay"
+        android:dividerHeight="1dip"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true" >
 
     </ListView>
 
